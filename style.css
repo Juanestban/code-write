@@ -1,0 +1,127 @@
+:root {
+  --cw-bg-color: #040613;
+  --cw-bg-having-color: #030614;
+  --cw-text-color: #ddd;
+
+  --cw-border-color: #0a162f;
+  --cw-border-hover-color: #66f;
+  --cw-border-focus-color: #09f;
+}
+
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--cw-text-color);
+}
+
+#app {
+  height: 100vh;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--cw-bg-color);
+  display: grid;
+  /* grid-template-columns: calc(30% - 5px) 10px calc(70% - 5px); */
+  grid-template-columns: 0.4fr 10px 1fr;
+}
+
+/* split js */
+
+.gutter-col {
+  /* grid-row: 1/-1; */
+  grid-area: auto;
+  cursor: col-resize;
+  background-color: var(--cw-border-color);
+  background-image: url('./public/icons/vertical.png');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* styles normal */
+
+.wrapper:nth-child(1) {
+  display: grid;
+  grid-template-rows: calc(100% / 3);
+  overflow: hidden;
+  /* resize: horizontal; */
+  /* box-shadow: 8px 0px 7px 0px rgb(10, 22, 47, 0.5); */
+}
+
+.roles {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--cw-border-color);
+  overflow: hidden;
+  position: relative;
+}
+
+.roles label {
+  font-size: 17px;
+  font-weight: bold;
+  padding: 10px;
+  text-transform: capitalize;
+}
+
+.roles textarea {
+  height: 100%;
+  background-color: var(--cw-bg-having-color);
+  border: 1px solid transparent;
+  color: var(--cw-text-color);
+  font-family: 'Roboto', sans-serif;
+  resize: none;
+  text-decoration: none;
+  /* focus-visible => border */
+}
+
+.roles textarea:hover {
+  border-top: 1px solid var(--cw-border-hover-color);
+}
+
+.roles textarea:focus-visible {
+  border-top: 1px solid var(--cw-border-focus-color);
+  box-shadow: none;
+  outline: none;
+}
+
+/* will remote */
+.wrapper iframe {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: none;
+  display: block;
+  background-color: #fff;
+}
+
+/* float icons */
+
+.float {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.float img {
+  width: 30px;
+  height: 30px;
+  opacity: 0.5;
+}
+
+.roles:hover > .float img {
+  opacity: 1;
+}
+
+.float span {
+  color: var(--cw-border-color);
+  opacity: 0.6;
+  user-select: none;
+}
