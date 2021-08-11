@@ -116,6 +116,7 @@ body {
   opacity: 0.5;
 }
 
+.roles textarea:focus + .float img,
 .roles:hover > .float img {
   opacity: 1;
 }
