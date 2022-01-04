@@ -10,6 +10,7 @@
     "vite": "2.4.4"
   },
   "dependencies": {
+    "monaco-editor": "0.31.1",
     "split-grid": "1.0.11"
   }
 }

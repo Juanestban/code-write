@@ -1,7 +1,11 @@
 :root {
   --cw-bg-color: #040613;
-  --cw-bg-having-color: #030614;
+  --cw-bg-having-color: #0c0f1f;
+  --cw-border-color-txtarea: #162566;
+
   --cw-text-color: #ddd;
+
+  --white: #fff;
 
   --cw-border-color: #0a162f;
   --cw-border-hover-color: #66f;
@@ -30,30 +34,54 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--cw-bg-color);
   display: grid;
-  /* grid-template-columns: calc(30% - 5px) 10px calc(70% - 5px); */
   grid-template-columns: 0.4fr 10px 1fr;
 }
 
 /* split js */
 
 .gutter-col {
-  /* grid-row: 1/-1; */
   grid-area: auto;
+  position: relative;
   cursor: col-resize;
   background-color: var(--cw-border-color);
+}
+
+.gutter-col::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 50px;
+  top: 50%;
   background-image: url('./public/icons/vertical.png');
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.gutter-row {
+  grid-area: auto;
+  position: relative;
+  cursor: row-resize;
+  background-color: var(--cw-border-color);
+}
+
+.gutter-row::before {
+  position: absolute;
+  content: '';
+  width: 50px;
+  height: 100%;
+  left: 50%;
+  background-image: url('./public/icons/vertical.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: rotate(90deg);
 }
 
 /* styles normal */
 
 .wrapper:nth-child(1) {
   display: grid;
-  grid-template-rows: calc(100% / 3);
+  grid-template-rows: 1fr 0.1fr 1fr 0.1fr 1fr;
   overflow: hidden;
-  /* resize: horizontal; */
-  /* box-shadow: 8px 0px 7px 0px rgb(10, 22, 47, 0.5); */
 }
 
 .roles {
@@ -76,10 +104,10 @@ body {
   background-color: var(--cw-bg-having-color);
   border: 1px solid transparent;
   color: var(--cw-text-color);
+  border-top: 1px solid var(--cw-border-color-txtarea);
   font-family: 'Roboto', sans-serif;
   resize: none;
   text-decoration: none;
-  /* focus-visible => border */
 }
 
 .roles textarea:hover {
@@ -99,7 +127,7 @@ body {
   margin: 0;
   border: none;
   display: block;
-  background-color: #fff;
+  background-color: var(--white);
 }
 
 /* float icons */
