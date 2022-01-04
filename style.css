@@ -1,5 +1,5 @@
 :root {
-  --cw-bg-color: #040613;
+  --cw-bg-color: rgba(35, 39, 46, 0.95);
   --cw-bg-having-color: #0c0f1f;
   --cw-border-color-txtarea: #162566;
 
@@ -7,7 +7,8 @@
 
   --white: #fff;
 
-  --cw-border-color: #0a162f;
+  --cw-border-color: #171a1f;
+  --cw-border-color-rgba: rgba(10, 22, 47, 0.5);
   --cw-border-hover-color: #66f;
   --cw-border-focus-color: #09f;
 }
@@ -43,7 +44,7 @@ body {
   grid-area: auto;
   position: relative;
   cursor: col-resize;
-  background-color: var(--cw-border-color);
+  background-color: var(--cw-border-color-rgba);
 }
 
 .gutter-col::before {
@@ -61,7 +62,7 @@ body {
   grid-area: auto;
   position: relative;
   cursor: row-resize;
-  background-color: var(--cw-border-color);
+  background-color: var(--cw-border-color-rgba);
 }
 
 .gutter-row::before {
@@ -99,27 +100,6 @@ body {
   text-transform: capitalize;
 }
 
-.roles textarea {
-  height: 100%;
-  background-color: var(--cw-bg-having-color);
-  border: 1px solid transparent;
-  color: var(--cw-text-color);
-  border-top: 1px solid var(--cw-border-color-txtarea);
-  font-family: 'Roboto', sans-serif;
-  resize: none;
-  text-decoration: none;
-}
-
-.roles textarea:hover {
-  border-top: 1px solid var(--cw-border-hover-color);
-}
-
-.roles textarea:focus-visible {
-  border-top: 1px solid var(--cw-border-focus-color);
-  box-shadow: none;
-  outline: none;
-}
-
 /* will remote */
 .wrapper iframe {
   width: 100%;
@@ -130,18 +110,25 @@ body {
   background-color: var(--white);
 }
 
+#html,
+#css,
+#javascript {
+  width: 100%;
+  height: 100%;
+}
+
 /* float icons */
 
 .float {
   position: absolute;
   bottom: 5px;
   right: 5px;
+  user-select: none;
 }
 
 .float img {
-  width: 30px;
-  height: 30px;
   opacity: 0.5;
+  user-select: none;
 }
 
 .roles textarea:focus + .float img,
@@ -153,4 +140,50 @@ body {
   color: var(--cw-border-color);
   opacity: 0.6;
   user-select: none;
+}
+
+/* export code */
+
+.export-code {
+  position: absolute;
+  top: 1%;
+  right: 1%;
+}
+
+.button-export {
+  user-select: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 2px solid #2f2f2f;
+  color: rgba(10, 22, 47);
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.button-export:hover {
+  color: var(--white);
+  background-color: var(--cw-border-color);
+  border-color: transparent;
+}
+
+.button-export:disabled {
+  cursor: not-allowed;
+  background-color: #f2f2f2;
+  color: gray;
+  border-color: #ccc;
+}
+
+#is-copied {
+  display: none;
+  position: absolute;
+  bottom: 1%;
+  left: 50%;
+  border: 1px solid var(--cw-bg-color);
+  background-color: var(--cw-bg-color);
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+#is-copied span {
+  color: var(--cw-text-color);
 }
