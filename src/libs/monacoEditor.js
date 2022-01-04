@@ -7,7 +7,7 @@ import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker'
 import { useBase64 } from '../hooks/useBase64'
 import { $ } from './JQuery'
 
-const { /*getAllHashed,*/ getBase64ToString } = useBase64()
+const { getBase64ToString } = useBase64()
 const { pathname } = window.location
 const pathArray = pathname.split('***')
 const [html, css, js] = getBase64ToString(pathArray)
@@ -26,7 +26,17 @@ const attributesEditor = {
   theme: 'vs-dark',
   automaticLayout: true,
   fontSize: 16,
-  tabCompletion: 'on',
+  fontFamily: 'Cascadia Code',
+  fontLigatures: true,
+  tabSize: 2,
+  selectionHighlight: false,
+  wordBasedSuggestions: false,
+  suggestSelection: 'first',
+  tabCompletion: 'onlySnippets',
+  suggest: {
+    insertMode: 'replace',
+    snippetsPreventQuickSuggestions: false,
+  },
   minimap: {
     enabled: false,
   },
@@ -49,5 +59,27 @@ const jsEditor = monaco.editor.create($('#javascript'), {
   language: 'javascript',
   ...attributesEditor,
 })
+
+// fetch(
+//   'https://raw.githubusercontent.com/Binaryify/OneDark-Pro/master/themes/OneDark-Pro-darker.json'
+// )
+//   .then((res) => res.json())
+//   .then((data) => {
+//     console.log('resolved', data)
+//     monaco.editor.defineTheme('One-Dark-Pro', {
+//       ...data,
+//       base: 'vs-dark',
+//       inherit: true,
+//       rules: [
+//         ...data.tokenColors.map((elements) => ({
+//           ...elements,
+//           token: elements.name,
+//           foreground: elements.settings.foreground,
+//         })),
+//         { token: '', foreground: '#7f848e' },
+//       ],
+//     })
+//     monaco.editor.setTheme('One-Dark-Pro')
+//   })
 
 export { htmlEditor, cssEditor, jsEditor }

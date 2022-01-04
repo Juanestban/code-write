@@ -1,6 +1,7 @@
 import { $ } from './JQuery'
 import { useBase64 } from '../hooks/useBase64'
 import { htmlEditor, cssEditor, jsEditor } from './monacoEditor'
+import { copyCode } from './copyCode'
 
 const { getAllHashed } = useBase64()
 
@@ -24,8 +25,9 @@ function handlerText() {
   const css = cssEditor.getValue()
   const js = jsEditor.getValue()
   const hashed = getAllHashed({ html, css, js })
+  const isWritted = html !== '' || css !== '' || js !== ''
   console.clear()
-  console.log(`http://localhost:3000/${hashed}`)
+  copyCode(hashed, isWritted)
 
   const htmlForPreview = createHTML({ html, css, js })
   $('iframe').setAttribute('srcdoc', htmlForPreview)

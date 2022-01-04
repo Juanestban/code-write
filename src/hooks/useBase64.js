@@ -1,7 +1,7 @@
 export const useBase64 = () => {
   const transformToBase64 = (stringHTML = '', result) => {
     const encode = window.btoa(stringHTML)
-    console.log('base64 - transformated')
+
     result(encode, stringHTML)
   }
 
