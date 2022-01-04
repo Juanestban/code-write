@@ -1,25 +1,28 @@
 import { $ } from './JQuery'
 import { useBase64 } from '../hooks/useBase64'
+import { htmlEditor, cssEditor, jsEditor } from './monacoEditor'
 
-const { getAllHashed, getBase64ToString } = useBase64()
-const $html = $('#html')
-const $css = $('#css')
-const $js = $('#js')
+const { getAllHashed } = useBase64()
 
 export const initializer = () => {
-  const { pathname } = window.location
-  const pathArray = pathname.split('***')
-  const [html, css, js] = getBase64ToString(pathArray)
-  $html.value = html === undefined ? '' : html
-  $css.value = css === undefined ? '' : css
-  $js.value = js === undefined ? '' : js
   handlerText()
+
+  // const body = $('#app')
+
+  // option for implement the shortcut
+  /*
+  body.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.shiftKey && e.code === 'Digit1') {
+      console.log('another')
+    }
+  })
+  */
 }
 
 function handlerText() {
-  const html = $html.value
-  const css = $css.value
-  const js = $js.value
+  const html = htmlEditor.getValue()
+  const css = cssEditor.getValue()
+  const js = jsEditor.getValue()
   const hashed = getAllHashed({ html, css, js })
   console.clear()
   console.log(`http://localhost:3000/${hashed}`)
@@ -28,11 +31,11 @@ function handlerText() {
   $('iframe').setAttribute('srcdoc', htmlForPreview)
 }
 
-$html.addEventListener('input', handlerText)
-$css.addEventListener('input', handlerText)
-$js.addEventListener('input', handlerText)
+htmlEditor.onDidChangeModelContent(handlerText)
+cssEditor.onDidChangeModelContent(handlerText)
+jsEditor.onDidChangeModelContent(handlerText)
 
-function createHTML({ html, css, js }) {
+function createHTML({ html = '', css = '', js = '' }) {
   return `
 <!DOCTYPE html>
 <html lang="en">

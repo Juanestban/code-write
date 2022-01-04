@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@vitejs/plugin-vue@^1.4.0":
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/@vitejs/plugin-vue/-/plugin-vue-1.10.2.tgz#d718479e2789d8a94b63e00f23f1898ba239253a"
+  integrity sha512-/QJ0Z9qfhAFtKRY+r57ziY4BSbGUTGsPRMpB/Ron3QPwBZM4OZAZHdTa4a8PafCwU5DTatXG8TMDoP8z+oDqJw==
+
 esbuild@^0.12.8:
   version "0.12.29"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.12.29.tgz#be602db7c4dc78944a9dbde0d1ea19d36c1f882d"
